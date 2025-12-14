@@ -4,6 +4,7 @@ public class Snake : MonoBehaviour
 {
     Vector3 direction;
     public float speed = 0.1f;
+    public Transform bodyPrefab; // 蛇身預製物
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,25 +19,25 @@ public class Snake : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("W");
+            // Debug.Log("W");
             // transform.Translate(0,1,0);
             direction = Vector3.up;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("S");
+            // Debug.Log("S");
             // transform.Translate(0, -1, 0);
             direction = Vector3.down;
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("A");
+            // Debug.Log("A");
             // transform.Translate(-1, 0, 0);
             direction = Vector3.left;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("D");
+            // Debug.Log("D");
             // transform.Translate(1, 0, 0);
             direction = Vector3.right;
         }
