@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class Snake : MonoBehaviour
 {
+    public GameUI gameUI; // 使用遊戲UI介面的腳本
+
     Vector3 direction;
     public float speed = 0.1f;
 
@@ -71,6 +73,8 @@ public class Snake : MonoBehaviour
             // Instantiate(bodyPrefab); // 產生蛇身
             bodies.Add(Instantiate(bodyPrefab, transform.position, Quaternion.identity)); // 在蛇頭位置產生蛇身並加入蛇身清單 \
             // Quaternion.identity 表示不旋轉
+
+            gameUI.AddScore(); // 加分
         }
         // Debug.Log(collision); // 碰撞偵測
 
@@ -92,5 +96,7 @@ public class Snake : MonoBehaviour
         }
         bodies.Clear(); // 清空蛇身清單
         bodies.Add(transform); // 重新加入蛇頭
+
+        gameUI.ResetScore(); // 重設分數
     }
 }
