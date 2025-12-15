@@ -19,7 +19,8 @@ public class Snake : MonoBehaviour
 
         Time.timeScale = speed; // 調整Unity的遊戲執行速度
 
-        bodies.Add(transform); // 將蛇頭加入蛇身清單
+        // bodies.Add(transform); // 將蛇頭加入蛇身清單
+        ResetStage(); // 初始化遊戲
     }
 
     // Update is called once per frame
@@ -72,5 +73,24 @@ public class Snake : MonoBehaviour
             // Quaternion.identity 表示不旋轉
         }
         // Debug.Log(collision); // 碰撞偵測
+
+        if (collision.CompareTag("Obstacle"))
+        {
+            Debug.Log("Game Over");
+            ResetStage(); // 重置遊戲
+        }
+    }
+
+    void ResetStage()
+    {
+        transform.position = Vector3.zero; // 重置位置
+        direction = Vector3.zero; // 停止移動
+
+        for (int i = 1; i < bodies.Count; i++)
+        {
+            Destroy(bodies[i].gameObject); // 刪除蛇身遊戲物件
+        }
+        bodies.Clear(); // 清空蛇身清單
+        bodies.Add(transform); // 重新加入蛇頭
     }
 }
