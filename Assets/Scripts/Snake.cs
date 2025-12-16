@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Snake : MonoBehaviour
 {
     public GameUI gameUI; // 使用遊戲UI介面的腳本
+    public GameAudio gameAudio; // 使用遊戲音效介面的腳本
 
     Vector3 direction;
     public float speed = 0.1f;
@@ -75,6 +76,8 @@ public class Snake : MonoBehaviour
             // Quaternion.identity 表示不旋轉
 
             gameUI.AddScore(); // 加分
+            // gameAudio.PlayEatSound(); // 播放吃到食物音效片段
+            gameAudio.EatSound(); // 播放吃到食物音效
         }
         // Debug.Log(collision); // 碰撞偵測
 
@@ -82,6 +85,7 @@ public class Snake : MonoBehaviour
         {
             Debug.Log("Game Over");
             ResetStage(); // 重置遊戲
+            gameAudio.ReplayBackGroundMusic(); // 重播背景音樂
         }
     }
 
